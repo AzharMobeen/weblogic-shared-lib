@@ -14,21 +14,34 @@ In multiple projects we are using common dependencies so every time we need to i
   Implementation-Version: 1.0
   Implementation-Vendor: Az MaYo.
   Extension-Name: weblogic-share-lib
+5) In pom.xml file please update build part like:
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>				
+				<configuration>
+					<attachClasses>true</attachClasses>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 5) now just do mvn clean install
 
 # Now some steps for client appliction where we will include this shared lib.
 1) In weblogic.xml file (if not created then please create) add bellow lines according to you
-    <wls:library-ref>
-        <wls:library-name>weblogic-shared-lib-1.0</wls:library-name>
-        <wls:exact-match>false</wls:exact-match>
-    </wls:library-ref>  
+	<wls:library-ref>
+        	<wls:library-name>weblogic-shared-lib-1.0</wls:library-name>
+        	<wls:exact-match>false</wls:exact-match>
+    	</wls:library-ref>  
 2) Update pom.xml file and include this dependency as provided like:
-    <dependency>
-			<groupId>com.az</groupId>
-			<artifactId>weblogic-shared-lib</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
+	<dependency>
+		<groupId>com.az</groupId>
+		<artifactId>weblogic-shared-lib</artifactId>
+		<version>1.0</version>
+		<scope>provided</scope>
+		<classifier>classes</classifier>
+    	</dependency>
 
 That's it.
 
