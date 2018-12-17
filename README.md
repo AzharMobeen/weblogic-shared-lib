@@ -44,5 +44,6 @@ In multiple projects we are using common resources or dependencies so every time
     	</dependency>
 
 That's it.
+Now all the dependencies and resources those are in weblogic-shared-lib folder containing will be available for all the project those will include in weblogic.xml file.
 
 Please make sure shared lib should be deployed as weblogic shared lib and status is active. then deploye your project.
