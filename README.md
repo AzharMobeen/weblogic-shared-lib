@@ -7,13 +7,13 @@ In multiple projects we are using common resources or dependencies so every time
 2) Packaging should be war.
 3) Create MANIFEST.MF in src/main/resources/
 4) We have to set some properties in MANIFEST.MF
-  *Manifest-Version: 1.0
-  Specification-Title: weblogic-share-lib-1.0
-  Specification-Version: 1.0
-  Implementation-Title: weblogic-share-lib-1.0
-  Implementation-Version: 1.0
-  Implementation-Vendor: Az MaYo.
-  Extension-Name: weblogic-share-lib*
+  * Manifest-Version: 1.0
+  * Specification-Title: weblogic-share-lib-1.0
+  * Specification-Version: 1.0
+  * Implementation-Title: weblogic-share-lib-1.0
+  * Implementation-Version: 1.0
+  * Implementation-Vendor: Az MaYo.
+  * Extension-Name: weblogic-share-lib*
 5) In pom.xml file please update build part like:
 
 ``` 
