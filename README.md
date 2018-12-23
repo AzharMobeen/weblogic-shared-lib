@@ -1,19 +1,19 @@
 # weblogic-shared-lib
-In multiple projects we are using common resources or dependencies so every time we need to include in ever project if we create common shared lib for all the project and deploy on Application server like Weblogic and in that way we can make it simple.
+In multiple projects we are using common resources or dependencies so every time we need to include all resources and dependencies in every project, so if we create **common shared lib** for all projects and deploy on Application server like *Weblogic* and in that way we can use shared lib for all.
 
 
 # Steps:
-1) create simple maven project and include all common dependencies into his pom.
-2) packaging should be war.
-3) create MANIFEST.MF in src/main/resources/
-4) Then put details of this shared lib for weblogic Application sever in MANIFEST.MF
-  Manifest-Version: 1.0
+1) Create simple maven project and include all common dependencies in pom.
+2) Packaging should be war.
+3) Create MANIFEST.MF in src/main/resources/
+4) We have to set some properties in MANIFEST.MF
+  *Manifest-Version: 1.0
   Specification-Title: weblogic-share-lib-1.0
   Specification-Version: 1.0
   Implementation-Title: weblogic-share-lib-1.0
   Implementation-Version: 1.0
   Implementation-Vendor: Az MaYo.
-  Extension-Name: weblogic-share-lib
+  Extension-Name: weblogic-share-lib*
 5) In pom.xml file please update build part like:
 	
 	<build>
@@ -28,9 +28,9 @@ In multiple projects we are using common resources or dependencies so every time
 		</plugins>
 	</build>
 	
-5) now just do mvn clean install
+5) Now just do mvn clean install
 
-# Now some steps for client appliction where we will include this shared lib.
+# Now some steps for client appliction (where we will include this shared lib).
 1) In weblogic.xml file (if not created then please create) add bellow lines according to you
 	
 	<wls:library-ref>
@@ -38,7 +38,7 @@ In multiple projects we are using common resources or dependencies so every time
         	<wls:exact-match>false</wls:exact-match>
     	</wls:library-ref>  
 	
-2) Update pom.xml file and include this dependency as provided like:
+2) Update pom.xml file and include this dependency with scope **provided** like:
 	
 	<dependency>
 		<groupId>com.az</groupId>
@@ -49,6 +49,6 @@ In multiple projects we are using common resources or dependencies so every time
     	</dependency>
 
 That's it.
-Now all the dependencies and resources those are in weblogic-shared-lib folder containing will be available for all the project those will include in weblogic.xml file.
+Now all the dependencies and resources those are in weblogic-shared-lib folder containing will be available for all the project those will include this **shared lib** in weblogic.xml file.
 
-Please make sure shared lib should be deployed as weblogic shared lib and status is active. then deploye your project.
+Please make sure shared lib should be deployed as **weblogic shared lib** and status is active. then deploye your project.
