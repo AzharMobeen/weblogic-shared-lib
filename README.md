@@ -15,7 +15,8 @@ In multiple projects we are using common resources or dependencies so every time
   Implementation-Vendor: Az MaYo.
   Extension-Name: weblogic-share-lib*
 5) In pom.xml file please update build part like:
-	
+
+``` 
 	<build>
 		<plugins>
 			<plugin>
@@ -27,19 +28,20 @@ In multiple projects we are using common resources or dependencies so every time
 			</plugin>
 		</plugins>
 	</build>
-	
+```
 5) Now just do mvn clean install
 
 # Now some steps for client appliction (where we will include this shared lib).
 1) In weblogic.xml file (if not created then please create) add bellow lines according to you
-	
+```	
 	<wls:library-ref>
         	<wls:library-name>weblogic-shared-lib-1.0</wls:library-name>
         	<wls:exact-match>false</wls:exact-match>
     	</wls:library-ref>  
-	
+```
+
 2) Update pom.xml file and include this dependency with scope **provided** like:
-	
+```
 	<dependency>
 		<groupId>com.az</groupId>
 		<artifactId>weblogic-shared-lib</artifactId>
@@ -47,7 +49,7 @@ In multiple projects we are using common resources or dependencies so every time
 		<scope>provided</scope>
 		<classifier>classes</classifier>
     	</dependency>
-
+```
 That's it.
 Now all the dependencies and resources those are in weblogic-shared-lib folder containing will be available for all the project those will include this **shared lib** in weblogic.xml file.
 
